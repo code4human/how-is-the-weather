@@ -111,8 +111,12 @@ function setWeatherInfo(cityName, weatherInfo) {
   /**
    * data.js 파일에 있는 imgLinks 객체를 사용해 날씨에 맞는 이미지를 표시해보세요!
    */
-  const weatherLink = weatherInfo.weather;
-  image.src = `./img/${imgLinks[weatherLink]}`; // 이곳에 이미지 파일의 경로를 입력해주면 이미지 파일이 표시됩니다.
+  const weatherLink = imgLinks[weatherInfo.weather];
+  const backgroundLink = backColors[weatherInfo.weather];
+
+  image.src = `./img/${weatherLink}`; // 이곳에 이미지 파일의 경로를 입력해주면 이미지 파일이 표시됩니다.
+  //getElementById()와 다르게 getElementsByTagName()는 Elements이기 때문에 배열로 갖다줌
+  document.getElementsByTagName("body")[0].style.background = backgroundLink;
 
   /**
    * 아래의 코드는 어떤 역할을 할까요?

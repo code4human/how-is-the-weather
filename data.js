@@ -14,5 +14,13 @@ const imgLinks = {
   Clear: "sun.png",
   Rain: "rain.png",
   Snow: "snowing.png",
-  Clouds: "cloudy.png",
+  Clouds: "snowing.png",
 };
+
+
+const backColors = {
+  Clear: "linear-gradient(to left, #ffb75e, #ed8f03)",
+  Rain: "linear-gradient(to left, #2c3e50, #3498db)", 
+  Snow: "linear-gradient(to left, #004ff9, #fff94c)", 
+  Clouds: "linear-gradient(to left, #304352, #d7d2cc)"
+}
