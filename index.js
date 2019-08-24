@@ -41,13 +41,18 @@ function getGeoCode(city) {
          *
          * * resolve에 넘겨주어야 하는 input 형식
          * {
-         *   lat: 위도,
-         *   lng: 경도
+         *    lat: 위도
+         *    lng: 경도
          * }
          */
+        let locationData = {
+          lat : data.results[0].geometry.location.lat,
+          lng : data.results[0].geometry.location.lng
+        }
+        
         console.log("우리가 받은 위치 데이터 ", data);
 
-        resolve(); // 여기에 저희가 원하는 형식의 값을 넣어주세요!
+        resolve(locationData); // 여기에 저희가 원하는 형식의 값을 넣어주세요!
       });
     });
   });
@@ -74,9 +79,13 @@ function getWeatherData(lat, lng) {
          *    weather: 날씨(데이터에서 weather -> main을 찾아 설정해주세요!)
          * }
          */
+        let weatherData = {
+          temp : data.main.temp,
+          weather : data.weather[0].main
+        }
         console.log("우리가 받은 날씨 데이터 ", data);
 
-        resolve(); // 여기에 저희가 원하는 형식의 값을 넣어주세요!
+        resolve(weatherData); // 여기에 저희가 원하는 형식의 값을 넣어주세요!
       });
     });
   });
@@ -96,13 +105,14 @@ function setWeatherInfo(cityName, weatherInfo) {
    * 우리가 받아온 온도는 Kelvin 형식으로 표시되어있습니다.
    * 어떻게 Celsius 형식으로 변경할 수 있을까요?
    */
-  temp.innerText = weatherInfo.temp; // 이곳에 넣어준 값이 온도로 표시됩니다!
+
+  temp.innerText = Math.round(weatherInfo.temp - 273.15); // 이곳에 넣어준 값이 온도로 표시됩니다!
 
   /**
    * data.js 파일에 있는 imgLinks 객체를 사용해 날씨에 맞는 이미지를 표시해보세요!
    */
-  const weatherLink = "sun.png";
-  image.src = `./img/${weatherLink}`; // 이곳에 이미지 파일의 경로를 입력해주면 이미지 파일이 표시됩니다.
+  const weatherLink = weatherInfo.weather;
+  image.src = `./img/${imgLinks[weatherLink]}`; // 이곳에 이미지 파일의 경로를 입력해주면 이미지 파일이 표시됩니다.
 
   /**
    * 아래의 코드는 어떤 역할을 할까요?
