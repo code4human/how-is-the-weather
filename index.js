@@ -136,3 +136,4 @@ function setWeatherInfo(cityName, weatherInfo) {
  * 원하는 이미지를 찾아 img 폴더에 저장 후 data.js 파일을 수정해보세요.
  *
  */
+
